@@ -129,7 +129,7 @@ function Map() {
         {[
           ["Reasoning", "Problem frames, planning, binding, diagnosis, bounded repair"],
           ["Memory", "Working, semantic, and episodic. Only semantic facts drive answers."],
-          ["Contracts", "Independent verification and the four-question usage rule"],
+          ["Contracts", "Independent verification and evidence-based contract checks"],
         ].map(([title, copy]) => (
           <article key={title} className="rounded-2xl border border-[#2a261c] bg-[#0c0e16] p-5">
             <h3 className="text-[#e8c872]">{title}</h3>

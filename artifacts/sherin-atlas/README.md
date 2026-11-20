@@ -49,7 +49,7 @@ flowchart TB
         direction TB
         R["REASONING<br/>ProblemFrame · Planning · Binding<br/>Diagnosis · Bounded Repair"]
         M["MEMORY<br/>Working · Semantic · Episodic<br/>Provenance · Classification"]
-        C["CONTRACTS<br/>Verification · Four-Question<br/>Effect Auth · Slot Contracts"]
+        C["CONTRACTS<br/>Verification<br/>Effect Auth · Slot Contracts"]
     end
 
     subgraph DOMAINS["DOMAIN SPACE"]
@@ -166,33 +166,6 @@ VerificationOutcome =
   | UNKNOWN      { residual }
 ```
 
-### Four-Question Training Contract
-
-Every tool, operator, or knowledge item must answer:
-
-```mermaid
-quadrantChart
-    title Four-Question Training Contract
-    x-axis Low Specificity --> High Specificity
-    y-axis Low Evidence --> High Evidence
-    quadrant-1 TRAINED → VERIFIED
-    quadrant-2 PARTIAL
-    quadrant-3 UNKNOWN
-    quadrant-4 KNOWN (needs evidence)
-    WHERE: [0.75, 0.80]
-    WHEN: [0.70, 0.65]
-    WHY: [0.80, 0.75]
-    HOW: [0.85, 0.70]
-```
-
-1. **WHERE** will this be used?
-2. **WHEN** will it be used?
-3. **WHY** will it be used?
-4. **HOW** will it be used?
-
-Only items with complete, evidence-backed answers reach `TRAINED`.  
-Only independently verified items reach `VERIFIED`.
-
 ### Fail-Closed Gates
 
 ```mermaid
@@ -272,8 +245,8 @@ Discovery records a candidate. It does not import, execute, or promote.
 %%{init: {'theme':'dark','themeVariables': {'fontFamily':'Inter, ui-sans-serif, system-ui'}}}%%
 flowchart TD
     SRC["Source appears<br/>directory · generated tool · form"] --> ID["Allocate identity<br/>+ source hash"]
-    ID --> CAND["Four-question candidate<br/>WHERE WHEN WHY HOW"]
-    CAND --> Q{"Each answer?"}
+    ID --> CAND["Candidate profile<br/>source · context · evidence"]
+    CAND --> Q{"Evidence complete?"}
     Q -->|no evidence| UNK["UNKNOWN"]
     Q -->|partial evidence| PART["PARTIAL"]
     Q -->|sources disagree| CONF["CONFLICT"]
@@ -353,7 +326,7 @@ sherin-atlas/
 │   │   ├── reasoning/              # Planning, binding, diagnosis, repair
 │   │   ├── memory/                 # Allocator, context, classifier, store
 │   │   ├── interfaces/             # Domain adapter contracts
-│   │   └── contracts/              # Verification & four-question contracts
+│   │   └── contracts/              # Verification contracts
 │   │
 │   ├── domains/
 │   │   └── programming/
@@ -408,7 +381,6 @@ python -m sherin.tools.self_cycle
 | Fail-closed on MISSING / CONFLICTING | ✅ Implemented |
 | Bounded Local Repair (sketch) | ✅ Implemented |
 | Self-health / self-validate loop | ✅ Implemented |
-| Four-Question Training Contract | ✅ Defined |
 | Domain Adapter interfaces | ✅ Defined |
 | Python domain (constructs + functions) | 🟡 In progress |
 | Complex DAG composition | 🔜 Planned |
@@ -422,7 +394,6 @@ python -m sherin.tools.self_cycle
 - [Diagram Gallery](docs/architecture/diagrams.md)
 - [Memory Classification System](docs/memory/README.md)
 - [Independent Verification Contract](docs/contracts/verification.md)
-- [Four-Question Training Contract](docs/contracts/four_question.md)
 - [Curriculum Protocol](docs/curriculum/README.md)
 - [Domain Adapter Guide](docs/architecture/domain_adapters.md)
 
@@ -444,7 +415,6 @@ python -m sherin.tools.self_cycle
 - [x] Core typed ports & verification outcomes
 - [x] Independent Verification Contract (P1-D)
 - [x] Self-health / self-repair demonstration
-- [x] Four-Question Training Contract
 - [ ] Effect Authorization (P1-E)
 - [ ] Bounded Local Repair (P2-C) production hardening
 - [ ] Full Python domain adapter
