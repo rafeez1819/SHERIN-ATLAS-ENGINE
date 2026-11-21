@@ -5,10 +5,7 @@
 ### Deterministic Reasoning Engine
 **Kulexicon handles language. SHERIN handles meaning.**
 
-[![Status](https://img.shields.io/badge/Status-Active%20Development-blue?style=for-the-badge)](https://github.com)
-[![Architecture](https://img.shields.io/badge/Architecture-Cognitor%20%2B%20Domain%20Adapters-purple?style=for-the-badge)](docs/architecture)
-[![Verification](https://img.shields.io/badge/Verification-Independent%20%26%20Fail--Closed-success?style=for-the-badge)](docs/contracts)
-[![License](https://img.shields.io/badge/License-Apache%202.0-orange?style=for-the-badge)](LICENSE)
+**Status:** Active Development · **Architecture:** Cognitor + Domain Adapters · **Verification:** Independent & Fail-Closed · **License:** Apache 2.0
 
 <br>
 
